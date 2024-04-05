@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+  <style type="text/css">
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+  }
+  /*section{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #009999;
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  }*/
+  section::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: all 0.4s ease;
+  }
+  section.active::before{
+  opacity: 1;
+  }
+  .container{
+  /*max-width: 800px;*/
+  /*width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 5px 10px;*/
+  /*position: relative;*/
+ /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);*/
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 0fr));
+  grid-gap: 15px;
+  grid-right: 10px;
+  grid-left: 10px;
+  justify-content: center; 
+       
+  
+  
+  }
+  section.active .container{
+  visibility: hidden;
+  
+  }
+
+   
+  .container .main-video{
+ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 90%;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  visibility: visible;
+  transition: all 0.4s ease;
+  }
+  section.active .container .main-video{
+  transform:translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  }
+  /*.container .main-video video{
+  
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  outline: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }*/
+  .container .main-video .close{
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 35px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  pointer-events: auto;
+  opacity: 0.6;
+  }
+  .container .main-video .close:hover{
+  opacity: 1;
+ 
+  }
+  .container .videos{
+  border: 1px solid #490a3d; 
+    display : block; 
+    width: 110px; 
+    height: 150px; 
+    margin: 0px; 
+    padding: 0px; 
+    overflow: hidden; 
+    border-radius: 5px; 
+    box-shadow: 2px 2px 5px rgba(0,0,0, .3); 
+    justify-content: center;
+    
+  position: relative;
+/*  height: 200px;
+  width: calc(100% / 2 - 5px);
+  margin: 0px 0;
+  cursor: pointer;
+ */
+  }
+  /*.container .videos::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  pointer-events: none;
+  }*/
+ .container .videos video{
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  outline: none;
+  pointer-events: none;
+  
+  }
+  /*.container .videos i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #fff;
+  pointer-events: none;
+  }*/
+  /*@media (max-width: 750px) {
+  .container .main-video{
+  position: fixed;
+  width: 83%;
+  }
+  .container .videos{
+  width: 100%;
+  height: 320px;
+  }
+  }
+  @media (max-width: 600px) {
+  .container .videos{
+  width: 100%;
+  height: 250px;
+  }
+  }*/
+  /*#i{
+  width:70px;
+  height:100px;
+  }*/
+ /* @media only screen and (max-width: 766px) {
+  
+  .container .videos {
+  font-size: 12px;
+  width:50%;
+  height:50%;
+  }
+  }*/
+  </style>
+ 
+    <meta charset="UTF-8">
+    <!--<title> Video Player in JavaScript | CodingLab </title>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons Link -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+   
+   <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+
+
+        
+
+
+
+    </head>
+    <body>
+
+
+  <section>
+    <div class="container">
+      <div class="main-video">
+ <video id="vid1" class="video-js vjs-default-skin vjs-fluid" poster="http://i.imgur.com/xxqm7EE.png" width="640" height="360" controls autoplay preload="none" data-setup='{ "techOrder": ["html5", "flash", "youtube"], "sources": [{ "type": "application/x-mpegURL", "src": "#"}]}'>
+ </video>
+<i class="bx bx-x close"></i>
+    </div>
+
+      <div class="videos" id="i">
+        <video src="https://toxicify.pro/stalker/jio.m3u8?id=363" poster="http://172.16.29.250/img/gtv.jpg"></video>
+
+      </div>
+      <div class="videos" id="i">
+        <video src="https://toxicify.pro/stalker/jio.m3u8?id=369"></video>
+
+      </div>
+      <div class="videos" id="i">
+        <video src="http://172.16.29.250/hls/Gazi-TV.m3u8"></video>
+
+      </div>
+      <div class="videos" id="i">
+        <video src="http://live.wmncdn.net/desichannel/7e2dd0aed46b70a5c77f4affdb702e4b.sdp/mono.m3u8"></video>
+
+      </div>
+    </div>
+
+    
+  </section>
+
+  <script>
+    const section = document.querySelector("section"),
+    mainVideo = document.querySelector(".main-video video"),
+     videos = document.querySelectorAll(".videos"),
+     close = document.querySelector(".close");
+
+     for (var i = 0; i < videos.length; i++) {
+       videos[i].addEventListener("click", (e)=>{
+         const target = e.target;
+         section.classList.add("active");
+         target.classList.add("active");
+         let src = document.querySelector(".videos.active video").src;
+         mainVideo.src = src;
+
+         close.addEventListener("click", ()=>{
+           section.classList.remove("active");
+           target.classList.remove("active");
+           mainVideo.src = "";
+         });
+       });
+     };
+  </script>
+  
+  <script src="https://unpkg.com/video.js@7.10.2/dist/video.js"></script>
+  <script src="https://unpkg.com/@videojs/http-streaming@2.4.2/dist/videojs-http-streaming.min.js"></script>
+
+</body>
+</html>
+
